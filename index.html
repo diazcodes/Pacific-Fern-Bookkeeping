@@ -1,123 +1,589 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
- window.ENV = {"PUBLIC_PREVIEW_DOMAIN":"csb.app","PUBLIC_ENVIRONMENT":"production","PUBLIC_API_DOMAIN":"https://codesandbox.io","PUBLIC_PITCHER_DOMAIN":"preview.csb.app","PUBLIC_PITCHER_MANAGER_URL":"https://codesandbox.io","PUBLIC_UI_URL":"https://codesandbox.io","PUBLIC_V1_URL":"https://codesandbox.io","PUBLIC_BASE_PATH":"/p","PUBLIC_AMPLITUDE_API_KEY":"a205ed9b06a7baf5a594bdd30293aa80","PUBLIC_VERSION":"main-4971117","PUBLIC_SENTRY_DSN":"https://86af9ec4f27f4c06b452949ad7912a0c@o72233.ingest.sentry.io/5900707"}
-</script>
-<style>
-    body {
-      background: var(--preferred-bg-color);  overscroll-behavior-x: none; margin: 0; padding: 0;}
-    html { overscroll-behavior-x: none;  margin: 0; padding: 0; }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Astro v5.13.2" />
+    <title>Carousel Template · Bootstrap v5.3</title>
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.3/examples/carousel/"
+    />
+    <!-- Bootstrap script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
 
-</style>
+    <!-- Bootstrap stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
 
-<link href="//sandpack-cdn-v2.codesandbox.io" rel="preconnect" />
-
-<link
-  href="https://codesandbox.io/p/fonts/inter/inter.css"
-  rel="stylesheet"
-/>
-  <script>
-  try {
-    let bgColor = "#0D0D0D"
-    let color = "#E6E6E6"
-
-    const preferredTheme = window.localStorage.getItem("CSB/THEME/0.1")
-
-    if (preferredTheme) {
-      if (preferredTheme) {
-        const data = JSON.parse(preferredTheme)
-
-        // Old theme
-        if (data.type && data.colors) {
-          bgColor = data.colors["neutral-bg-base"]
-          color = data.type === "light" ? "#1A1A1A" : "#E6E6E6"
-        }
-
+    <link
+      rel="apple-touch-icon"
+      href="/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.3/assets/img/favicons/favicon-32x32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.3/assets/img/favicons/favicon-16x16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json" />
+    <link
+      rel="mask-icon"
+      href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+      color="#712cf9"
+    />
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico" />
+    <meta name="theme-color" content="#712cf9" />
+    <link href="carousel.css" rel="stylesheet" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
       }
-    }
-    document.documentElement.style.setProperty(
-      "--preferred-bg-color",
-      bgColor
-    );
-    document.documentElement.style.setProperty(
-      "--preferred-color",
-      color
-    );
-  } catch (error) {
-    console.log("Could not set preferred theme", error)
-    // no op
-  }
-  </script>
-
-<style>
-    @keyframes ssr-loading-color {
-        0% {
-            stroke: #9D8BF9;
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
-        24% {
-            stroke: #9D8BF9;
-        }
-        25% {
-            stroke: #9D8BF9;
-        }
-        49% {
-            stroke: #9D8BF9;
-        }
-        50% {
-            stroke: #F68484;
-        }
-        74% {
-            stroke: #F68484;
-        }
-        75% {
-            stroke: #F68484;
-        }
-        99% {
-            stroke: #F68484;
-        }
-    }
-
-    @keyframes ssr-loading-spacing {
-        0% {
-            stroke-DashArray: 0 200;
-        }
-        45% {
-            stroke-DashOffset: 0;
-            stroke-DashArray: 200 200;
-        }
-        90% {
-            stroke-DashOffset: -200;
-            stroke-DashArray: 200 200;
-        }
-        100% {
-            stroke-DashOffset: -200;
-            stroke-DashArray: 200 200;
-        }
-    }
-</style>
-
-    <script type="module" crossorigin src="/p/assets/index-b9ea2f0e.js"></script>
-    <link rel="modulepreload" crossorigin href="/p/assets/vendor-f6fee415.js">
-    <link rel="stylesheet" href="/p/assets/index-1b3a74fc.css">
+      }
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: #0000001a;
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em #0000001a,
+          inset 0 0.125em 0.5em #00000026;
+      }
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+      .bd-mode-toggle .bi {
+        width: 1em;
+        height: 1em;
+      }
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"><div id="ssr-loading" style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column"><svg style="width:44px;height:44px" viewBox="0 0 100 100"><polyline fill="none" points="0, 0, 100, 0, 100, 100" stroke-width="15" style="stroke:gray"></polyline><polyline fill="none" points="0, 0, 0, 100, 100, 100" stroke-width="15" style="stroke:gray"></polyline><polyline fill="none" points="0, 0, 100, 0, 100, 100" stroke-width="15" style="animation:ssr-loading-spacing 1.2s ease-in, ssr-loading-color 4.8s linear;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:forwards;transform-origin:center center"></polyline><polyline fill="none" points="0, 0, 0, 100, 100, 100" stroke-width="15" style="animation:ssr-loading-spacing 1.2s ease-in, ssr-loading-color 4.8s linear;animation-iteration-count:infinite;animation-direction:normal;animation-fill-mode:forwards;transform-origin:center center"></polyline></svg><div id="ssr-loading-text" style="text-align:center;max-width:65ch;color:var(--preferred-color);font-family:Inter, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu;min-width:300px;padding-left:8px;padding-right:8px;padding-top:24px;font-size:13px;-webkit-font-smoothing:antialiased"> </div><script> if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.getRegistrations().then(registrations => {
-      const match = registrations.find((registration)  => {
-        return registration.active && registration.active.scriptURL.includes("editor-sw.js")
-      })
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path
+          d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
+        ></path>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path
+          d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"
+        ></path>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path
+          d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+        ></path>
+        <path
+          d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
+        ></path>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path
+          d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+        ></path>
+      </symbol>
+    </svg>
+    <div
+      class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+    >
+      <button
+        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        aria-label="Toggle theme (auto)"
+      >
+        <svg class="bi my-1 theme-icon-active" aria-hidden="true">
+          <use href="#circle-half"></use>
+        </svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul
+        class="dropdown-menu dropdown-menu-end shadow"
+        aria-labelledby="bd-theme-text"
+      >
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="light"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" aria-hidden="true">
+              <use href="#sun-fill"></use>
+            </svg>
+            Light
+            <svg class="bi ms-auto d-none" aria-hidden="true">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center"
+            data-bs-theme-value="dark"
+            aria-pressed="false"
+          >
+            <svg class="bi me-2 opacity-50" aria-hidden="true">
+              <use href="#moon-stars-fill"></use>
+            </svg>
+            Dark
+            <svg class="bi ms-auto d-none" aria-hidden="true">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="dropdown-item d-flex align-items-center active"
+            data-bs-theme-value="auto"
+            aria-pressed="true"
+          >
+            <svg class="bi me-2 opacity-50" aria-hidden="true">
+              <use href="#circle-half"></use>
+            </svg>
+            Auto
+            <svg class="bi ms-auto d-none" aria-hidden="true">
+              <use href="#check2"></use>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div>
 
-      const loadingEl = document.querySelector('#ssr-loading-text')
 
-      if (loadingEl) {
-        loadingEl.textContent = match ? 'Loading editor...' : 'Installing editor...';
-      }
-    }).catch(() => {})
-  }</script></div></div>
+
+<!-- NAVBAR -->
+
+    <header data-bs-theme="dark">
+
+
+
+      
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: rgb(144, 160, 71);">
+        <div class="container-fluid">
+
+
+
+          <a class="navbar-brand" href="#">
+            <img 
+              src="Images/logo.png" 
+              alt="Pacific Fern Bookkeeping Logo" 
+              height="30"
+              class="d-inline-block align-text-top me-2"
+            /> 
+            Pacific Fern Bookkeeping
+          </a>
+           
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              
+              <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+              
+        
+                <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+
+
+
+
+            </ul>
+            <a href="#" class="btn ms-auto" style="background-color: #d6e5a4; color: rgb(0, 0, 0);">Get Started</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- INQUIRY SECTION -->
+      <div style="background-color: #f5f7ee; padding: 80px 0;">
+        <div class="container marketing">
+          <div class="row align-items-center">
     
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"7449176f14aa420c959831edd48bd5b7","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-</body>
+            <!-- LEFT: Text -->
+            <div class="col-md-5">
+              <h5 style="color: #90a047;">Save time and money</h5>
+              <h2 class="featurette-heading fw-normal lh-1 mt-3">Get More From Your Bookkeeping</h2>
+              <p class="lead mt-4">
+                You didn't start your business to be an accountant. Let Pacific Fern handle the numbers so you can get back to doing what you love.
+              </p>
+            </div>
+    
+            <!-- RIGHT: Form -->
+            <div class="col-md-7">
+              <div class="card">
+                <div class="card-body p-4">
+    
+                  <div class="mb-3">
+                    <label class="form-label">Where are you running your business from?</label>
+                    <select class="form-select">
+                      <option value="">Select a state...</option>
+                      <option>California</option>
+                      <option>Texas</option>
+                      <option>New York</option>
+                      <option>Florida</option>
+                      <option>Washington</option>
+                      <option>Colorado</option>
+                      <option>Oregon</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+    
+                  <div class="mb-3">
+                    <label class="form-label">What best describes your current business setup?</label>
+                    <select class="form-select">
+                      <option value="">Select one...</option>
+                      <option>Sole proprietor / freelancer</option>
+                      <option>Single-member LLC</option>
+                      <option>Multi-member LLC</option>
+                      <option>S Corporation</option>
+                      <option>C Corporation</option>
+                      <option>Not yet registered</option>
+                    </select>
+                  </div>
+    
+                  <div class="mb-3">
+                    <label class="form-label">What kind of services do you offer?</label>
+                    <select class="form-select">
+                      <option value="">Select one...</option>
+                      <option>Consulting / professional services</option>
+                      <option>Creative / design / media</option>
+                      <option>Technology / software</option>
+                      <option>Health / wellness</option>
+                      <option>Legal / financial services</option>
+                      <option>Trades / construction</option>
+                      <option>Retail / e-commerce</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Expected annual revenue</label>
+                      <select class="form-select">
+                        <option value="">Select range...</option>
+                        <option>Under $50,000</option>
+                        <option>$50,000 – $100,000</option>
+                        <option>$100,000 – $250,000</option>
+                        <option>$250,000 – $500,000</option>
+                        <option>Over $500,000</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Expected annual expenses</label>
+                      <select class="form-select">
+                        <option value="">Select range...</option>
+                        <option>Under $10,000</option>
+                        <option>$10,000 – $25,000</option>
+                        <option>$25,000 – $75,000</option>
+                        <option>$75,000 – $150,000</option>
+                        <option>Over $150,000</option>
+                      </select>
+                    </div>
+                  </div>
+    
+                  <div class="mb-3">
+                    <label class="form-label">Full name</label>
+                    <input type="text" class="form-control" placeholder="Jane Smith">
+                  </div>
+    
+                  <div class="mb-3">
+                    <label class="form-label">Email address</label>
+                    <input type="email" class="form-control" placeholder="jane@yourbusiness.com">
+                  </div>
+    
+                  <div class="mb-3">
+                    <label class="form-label">Phone number</label>
+                    <input type="tel" class="form-control" placeholder="(555) 000-0000">
+                  </div>
+    
+                  <div class="mb-4">
+                    <label class="form-label">How did you hear about us?</label>
+                    <select class="form-select">
+                      <option value="">Select one...</option>
+                      <option>Google / search</option>
+                      <option>Social media</option>
+                      <option>Friend or colleague referral</option>
+                      <option>Online ad</option>
+                      <option>Podcast or article</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+    
+                  <button class="btn w-100" style="background-color: #452a29; color: white;">Submit inquiry</button>
+    
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- Marketing messaging and featurettes
+  ================================================== -->
+
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+      <div class="container marketing">
+        <!-- THREE ICONS -->
+        <h2 class="featurette-heading fw-normal lh-1 mt-5">How it works</h2>
+        <!-- Circle 1 -->
+        <div class="row mt-3 pt-4" style="margin-bottom: 80px">
+          <div class="col-lg-4">
+            <img
+              src="Images/icons-03.png"
+              width="120"
+              height="120"
+              class="rounded-circle"
+            />
+
+            <h2 class="fw-normal mt-5">Find out if we're a match</h2>
+            <p class="mt-3">
+              Verify information about yourself and your business to see if
+              we're a good match for your current needs.
+            </p>
+          </div>
+
+          <!-- Circle 2 -->
+          <div class="col-lg-4">
+            <img
+              src="Images/icons-04.png"
+              width="120"
+              height="120"
+              class="rounded-circle"
+            />
+            <h2 class="fw-normal mt-5">Complete your onboarding</h2>
+            <p class="mt-3">
+              Take the solo out of solopreneur—your very own finance department,
+              without the overhead.
+            </p>
+          </div>
+
+          <!-- Circle 3 -->
+          <div class="col-lg-4">
+            <img
+              src="Images/icons-02.png"
+              width="120"
+              height="120"
+              class="rounded-circle"
+            />
+            <h2 class="fw-normal mt-5">
+              Less paperwork
+            </h2>
+            <p class="mt-3"> All the tools to power your business in one place</p>
+          </div>
+        </div>
+      </div>
+
+
+
+        <div style="background-color: rgb(62, 62, 62); padding: 40px 0;">
+          <div class="container marketing">
+     
+     
+     
+     
+            <!-- PRICING SECTION -->
+   
+      <h2 class="featurette-heading fw-normal lh-1 mt-5" style="color: white;">Pricing</h2>
+      <h6 class="mb-5">
+        <span style="color: #ececec;">Pacific Fern Bookkeeping is tax deductible and pays for itself within months.**</span>
+      </h6>
+      <!-- MARGIN bottom -->
+      <div class="row mt-3" style="margin-bottom: 80px">
+        <div class="col-sm-6 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">LLC tier</h5>
+              <p class="card-text" style="font-size: 4rem; font-weight: medium;">$199 <span style="font-size: 1rem; font-weight: normal;">/ month</span></p>
+
+              
+              <a href="#" class="btn" style="background-color: #452a29; color: white;">Get started</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">S Corp tier</h5>
+              <p class="card-text" style="font-size: 4rem; font-weight: medium;">$349 <span style="font-size: 1rem; font-weight: normal;">/ month</span></p>
+              <a href="#" class="btn" style="background-color: #452a29; color: white;">Get started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+
+
+      <!-- CUSTOMER REVIEW -->
+
+
+<div class="container marketing">
+  <div class="row align-items-center" style="margin-bottom: 80px">
+   
+   
+   
+   
+    <div class="col-md-6 order-md-1">
+      <h2 class="featurette-heading fw-normal lh-1 mt-5">
+        Customer <span class="text-body-secondary">Review</span>
+      </h2>
+      <p class="lead pt-4">
+        "Pacific Fern Bookkeeping is a real game-changer for anyone who needs
+        help with business services. It's extremely easy to use and makes
+        it so simple to understand taxes, bookkeeping, reimbursements,
+        travel expenses, and more! As an entrepreneur, I'm always looking
+        for solutions that help me optimize my workload without
+        sacrificing quality and time - and Pacific Fern Bookkeeping does just
+        that! Highly recommended!"
+      </p>
+    </div>
+
+    
+   
+    <div class="col-md-6 order-md-2 mt-5">
+      <img
+        src="Images/Gemini_Generated_Image_c330ogc330ogc330.png"
+        class="img-fluid"
+      />
+    </div>
+
+
+
+
+
+   
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+      <!-- FOOTER -->
+      <hr class="featurette-divider" />
+      <!-- margin top -->
+      <footer class="container" style="margin-top: 80px">
+        <p>
+          &copy; 2026 Pacific Fern Bookkeeping, Inc. &middot;
+          <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+        </p>
+
+        <p class="small text-body-secondary">
+          Pacific Fern provides a suite of tools, back-office support, and
+          general information. Our services are not intended as tax, legal, or
+          professional advice.
+        </p>
+      </footer>
+      
+
+      <!-- SCRIPT -->
+    </main>
+    <script
+      src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      class="astro-vvvwv3sm"
+    ></script>
+  </body>
 </html>
+</div>
