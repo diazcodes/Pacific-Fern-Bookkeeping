@@ -1,2 +1,27 @@
 # Pacific Fern Bookkeeping
-I built this website as a simple, modern online home for my bookkeeping business. It’s a single-page site designed to clearly show what I offer and make it easy for potential clients to understand how I can help.  I kept the layout clean and straightforward, focusing on the essentials—my services, what I specialize in, and how to get in touch. Instead of multiple pages, everything is organized in one place so visitors can quickly find what they need without any confusion.  My goal with this site is to provide a professional, easy-to-navigate experience that reflects how I work: organized, efficient, and reliable. It also acts as a digital business card that I can share with small business owners and freelancers who need bookkeeping support.  Overall, it’s a simple but effective way for me to present my services and connect with clients online.
+## Features
+- Inquiry submission form
+- Simple and clean design
+- Responsive (works on mobile and desktop)
+- Basic input validation
+
+## Goal
+
+The goal of this website is to provide a fast and easy way for users to send inquiries and get responses without confusion or extra steps.
+
+## How It Works
+User opens the website
+Fills out the inquiry form
+Submits the form
+Inquiry is received for review
+
+## Technologies
+- Bootstrap 
+- HTML
+- CSS
+- JavaScript
+
+## Future Improvements
+Add email notifications
+Store inquiries in a database
+Improve form validation
