@@ -1,4 +1,5 @@
 # Pacific Fern Bookkeeping
+
 ## Features
 - Inquiry submission form
 - Simple and clean design
@@ -10,10 +11,10 @@
 The goal of this website is to provide a fast and easy way for users to send inquiries and get responses without confusion or extra steps.
 
 ## How It Works
-User opens the website
-Fills out the inquiry form
-Submits the form
-Inquiry is received for review
+- User opens the website
+- Fills out the inquiry form
+- Submits the form
+- Inquiry is received for review
 
 ## Technologies
 - Bootstrap 
@@ -22,6 +23,6 @@ Inquiry is received for review
 - JavaScript
 
 ## Future Improvements
-Add email notifications
-Store inquiries in a database
-Improve form validation
+- Add email notifications
+- Store inquiries in a database
+- Improve form validation
