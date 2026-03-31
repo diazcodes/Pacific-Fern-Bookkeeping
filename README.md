@@ -1,5 +1,3 @@
-# Pacific Fern Bookkeeping
-
 ## Features
 - Inquiry submission form
 - Simple and clean design
